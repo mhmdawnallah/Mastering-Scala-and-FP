@@ -6,6 +6,7 @@ import scala.annotation.tailrec
  * 1) Scala is a Functional programming language that applies Immutability which means that once a value is assigned to a variable, it cannot be changed.
  * This makes it easier to reason about code and prevents unexpected side effects.
  * 2) Avoid effects in the Pure Functions e.g Scala
+ * 3) Scala Compiler use type inference if not written be careful in recursive functions you should define the return type to make the compiler happy & best practice
  */
 object Functions {
 
