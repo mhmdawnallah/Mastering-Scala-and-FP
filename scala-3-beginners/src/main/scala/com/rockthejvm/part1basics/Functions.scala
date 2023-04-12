@@ -61,8 +61,6 @@ object Functions {
     isPrimeHelper()
   }
 
-
-
   def main(args: Array[String]): Unit = {
     val number1: Int = 3
     val number2: Int = 2
