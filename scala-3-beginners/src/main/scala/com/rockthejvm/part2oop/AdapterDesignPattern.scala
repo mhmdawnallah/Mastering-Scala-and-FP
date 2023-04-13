@@ -77,10 +77,10 @@ object AdapterDesignPattern {
     def read(): Seq[String] = {
       // Read data from JSON data source and convert to CSV format
       val jsonData = jsonDataSource.read()
-      jsonData.map { row =>
-        val fields = Seq("id", "name", "surname").map(field => (row \ field).as[String])
-        fields.mkString(",")
-      }
+      // conversion here from JSON -> CSV
+      Seq("""{"id": 1, "name": "John", "surname": "Doe"}""",
+        """{"id": 2, "name": "Jane", "surname": "Smith"}""",
+        """{"id": 3, "name": "Bob", "surname": "Johnson"}""")
     }
   }
 
