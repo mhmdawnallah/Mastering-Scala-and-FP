@@ -38,7 +38,7 @@ object OOPBasics {
   }
 
   class ImmutableCounter(val counter: Int = 1) {
-    def increment(): ImmutableCounter = n
+    def increment(): ImmutableCounter =
       new ImmutableCounter(this.counter + 1)
 
     def decrement(): ImmutableCounter =
