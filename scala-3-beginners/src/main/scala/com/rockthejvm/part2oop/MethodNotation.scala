@@ -1,5 +1,6 @@
 package com.rockthejvm.part2oop
 
+import scala.annotation.targetName
 import scala.language.postfixOps
 
 /**
@@ -13,22 +14,31 @@ import scala.language.postfixOps
  */
 object MethodNotation {
 
-  class Person(val name: String, age: Int, favoriteMovie: String) {
+  class Person(val name: String, val age: Int, favoriteMovie: String) {
     infix def likes(movie: String): Boolean =
       movie == favoriteMovie
 
     infix def +(person: Person): String =
       s"${this.name} is hanging out with ${person.name}"
 
+    infix def +(nickname: String): Person =
+      new Person(s"${this.name} $nickname", this.age, this.favoriteMovie)
+
     // prefix notation
     def unary_- : String =
       s"$name's alter ego"
+
+    def unary_+ : Person =
+      new Person(this.name, this.age + 1, this.favoriteMovie)
 
     // postfix notation
     def isAlive: Boolean = true
 
     def apply(): String =
       s"Hi, my name is $name and I really enjoy my $favoriteMovie"
+
+    def apply(times: Int): String =
+      s"$name watched $favoriteMovie $times times"
   }
   def main(args: Array[String]): Unit = {
     val khaled = Person("Khaled", 225, "N/A")
@@ -37,6 +47,7 @@ object MethodNotation {
     val name = "John"
     val message = greet.concat(" ").concat(name) // using dot notation
     val greeting = greet concat " " concat name // using infix notation
+    val khaledAwesome = khaled + "Awesome"
     assert(message == greeting)
     assert(!(khaled likes "Film1"))
     assert(khaled + ahmed == "Khaled is hanging out with Ahmed")
@@ -46,6 +57,9 @@ object MethodNotation {
     assert(khaled.isAlive)
     assert(khaled isAlive)
     assert(khaled.apply() == khaled())
+    assert(khaledAwesome.name == "Khaled Awesome")
+    assert((+khaledAwesome).age == 226)
+    assert(khaled.apply(3) == "Khaled watched N/A 3 times")
 
   }
 }
