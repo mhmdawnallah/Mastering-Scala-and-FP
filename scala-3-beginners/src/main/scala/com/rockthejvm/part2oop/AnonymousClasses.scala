@@ -29,7 +29,6 @@ object AnonymousClasses {
     override def transform(value: Int): Int = value * 2
   }
 
-  class DoublerList extends Transformer[Int, kkl[]]
 
   abstract class Animal {
     def eat(): String
