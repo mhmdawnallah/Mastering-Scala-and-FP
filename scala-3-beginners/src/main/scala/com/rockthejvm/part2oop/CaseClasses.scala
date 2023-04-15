@@ -18,6 +18,7 @@ object CaseClasses {
   case object CCWithNoArgs {
     def name: String = "Mohamed Awnallah"
   }
+
   def main(args: Array[String]): Unit = {
     val person = Person("Jackson", 400)
     val person2 = Person("Jack", 600)
