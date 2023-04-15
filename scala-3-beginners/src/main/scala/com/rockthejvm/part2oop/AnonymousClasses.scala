@@ -11,6 +11,26 @@ object AnonymousClasses {
     def greet(name: String): String
   }
 
+  trait Predicate[T] {
+    def test(element: T): Boolean
+  }
+
+
+  class EventPredicate extends Predicate[Int] {
+    override def test(element: Int): Boolean =
+      element % 2 == 0
+  }
+
+  trait Transformer[A, B] {
+    def transform(value: A): B
+  }
+
+  class Doubler extends Transformer[Int, Int] {
+    override def transform(value: Int): Int = value * 2
+  }
+
+  class DoublerList extends Transformer[Int, kkl[]]
+
   abstract class Animal {
     def eat(): String
   }
