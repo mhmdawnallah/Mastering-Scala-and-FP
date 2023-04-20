@@ -1,4 +1,7 @@
 package com.rockthejvm.part4power
+import scala.concurrent.Future
+import concurrent.ExecutionContext.Implicits.global
+import scala.util.{Failure, Success}
 
 /**
  * 1) Imperative programming in Scala encourages mutable state, which can lead to code that is harder to reason about and debug.
@@ -15,6 +18,7 @@ object ImperativeProgramming {
   def main(args: Array[String]): Unit = {
     testMutability()
     testLoop()
+    testFutures()
   }
 
   def testMutability(): Unit = {
@@ -31,4 +35,17 @@ object ImperativeProgramming {
     assert(i == 10)
   }
 
+  def increment(n: Int): Int =
+    n + 1
+
+  def testFutures(): Unit = {
+    val aFuture = Future {
+      42
+    }
+    aFuture.onComplete {
+      case Success(meaningOfLife) => println(s"I've found the $meaningOfLife")
+      case Failure(exception) => println(s"I've found the $exception")
+    }
+    assert(true)
+  }
 }
